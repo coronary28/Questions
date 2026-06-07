@@ -1,0 +1,269 @@
+/* Optional if you prefer CSS file instead of injected patch style */
+
+[data-theme="default"]{
+  --bg:#ffffff;
+  --bg-card:#ffffff;
+  --card-gradient:linear-gradient(180deg,#ffffff,#ffffff)
+}
+
+[data-theme="doctor"]{
+  --primary:#3b82f6;
+  --primary-light:#7dd3fc;
+  --primary-soft:rgba(59,130,246,.10);
+  --success:#0f766e;
+  --success-soft:rgba(15,118,110,.10);
+  --danger:#dc2626;
+  --danger-soft:rgba(220,38,38,.10);
+  --bg:linear-gradient(180deg,#f8fdff 0%,#eef8ff 100%);
+  --bg-card:#ffffff;
+  --text:#14324a;
+  --text-light:#56728a;
+  --text-muted:#7e9ab1;
+  --border:#d8edf9;
+  --border-light:#eff8fd;
+  --shadow:0 8px 24px rgba(14,116,144,.08),0 2px 10px rgba(15,23,42,.03);
+  --shadow-lg:0 20px 45px rgba(14,116,144,.10),0 6px 18px rgba(15,23,42,.05);
+  --card-gradient:linear-gradient(180deg,rgba(255,255,255,.98),rgba(244,251,255,.98));
+  --button-gradient:linear-gradient(135deg,#3b82f6,#7dd3fc)
+}
+
+/* Theme patch already used by script_patch.js and mirrored here */
+[data-theme="castle"]{
+  --primary:#7b8f45;
+  --primary-light:#d3c37a;
+  --primary-soft:rgba(123,143,69,.16);
+  --success:#7fb069;
+  --danger:#d97745;
+  --bg:linear-gradient(180deg,#1f2618 0%,#2f3820 40%,#161b12 100%);
+  --bg-card:rgba(32,40,24,.92);
+  --text:#eef6df;
+  --text-light:#c9d5af;
+  --text-muted:#93a07d;
+  --border:rgba(211,195,122,.20);
+  --border-light:rgba(255,255,255,.06);
+  --card-gradient:linear-gradient(180deg,rgba(45,55,33,.94),rgba(24,29,18,.94));
+  --button-gradient:linear-gradient(135deg,#6f8441,#c7b974);
+  --toast-bg:linear-gradient(135deg,rgba(111,132,65,.96),rgba(199,185,116,.92))
+}
+
+/* Logos: support logo / logo2 / logo3 without empty placeholders */
+.logo-gallery{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  direction:ltr;
+  flex-wrap:wrap;
+  min-height:90px;
+  margin-bottom:12px
+}
+.logo-slot{display:block}
+.logo-slot.hidden{display:none!important}
+
+/* Exam layout updates */
+.question-grid{direction:ltr}
+.exam-grid-controls{
+  display:flex;
+  justify-content:flex-start;
+  direction:ltr;
+  margin-bottom:12px
+}
+.exam-status-row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:10px;
+  direction:ltr;
+  margin-bottom:14px
+}
+.exam-progress-badge{justify-self:center}
+.exam-timer{justify-self:end}
+.btn-exam-settings{justify-self:start}
+
+/* Keep long-press hint visible in portrait and landscape */
+.hint-bar{display:block}
+@media (orientation:portrait) and (max-width:1180px){
+  #exams-hint-bar{display:block!important}
+}
+
+/* Subject card action buttons must stay hidden until long press only */
+.subject-actions{display:none}
+.subject-card.actions-open .subject-actions{display:flex}
+
+/* Statistics progress bar stays under data */
+.progress-card .progress-bar{
+  margin-top:10px;
+  margin-bottom:8px
+}
+
+/* Memories chart navigation */
+.memory-chart-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+  direction:rtl
+}
+
+/* Selection section helpers */
+.selection-bulk-toolbar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px
+}
+.selection-item-group-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-inline-start:auto
+}
+.selection-complete-btn{
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--bg-card) 94%,transparent 6%);
+  color:var(--success);
+  border-radius:10px;
+  padding:8px 10px;
+  cursor:pointer;
+  font-weight:900;
+  min-width:42px
+}
+.selection-complete-btn.done{
+  background:var(--success-soft);
+  border-color:var(--success)
+}
+.selection-drag-handle{
+  cursor:grab;
+  user-select:none;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px dashed var(--border);
+  color:var(--text-light)
+}
+.selection-group-item.group-completed{
+  background:color-mix(in srgb,var(--success-soft) 60%,var(--bg-card) 40%);
+  border-color:color-mix(in srgb,var(--success) 26%,var(--border) 74%)
+}
+.selection-group-item .done-title,
+.selection-group-item .done-sub{
+  text-decoration:line-through;
+  opacity:.65
+}
+.selection-group-item.dragging{opacity:.55}
+.selection-group-item.drag-over{
+  border-color:var(--primary);
+  background:var(--primary-soft)
+}
+
+/* Explanation and answer summary */
+.answer-summary{
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:12px;
+  line-height:1.8;
+  background:var(--success-soft);
+  border:1px solid var(--success);
+  color:var(--text)
+}
+.answer-summary strong,
+.answer-summary .answer-value{color:inherit}
+
+.explanation-box{
+  background:linear-gradient(135deg,rgba(37,99,235,.10),rgba(56,189,248,.08));
+  border:1px solid rgba(37,99,235,.28);
+  color:var(--text)
+}
+[data-theme="desert"] .explanation-box{
+  background:linear-gradient(135deg,rgba(59,130,246,.11),rgba(14,165,233,.08));
+  border-color:rgba(59,130,246,.24)
+}
+[data-theme="pirates"] .explanation-box{
+  background:linear-gradient(135deg,rgba(59,130,246,.11),rgba(14,165,233,.08));
+  border-color:rgba(59,130,246,.24)
+}
+[data-theme="doctor"] .explanation-box{
+  background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(125,211,252,.10));
+  border-color:rgba(59,130,246,.24)
+}
+[data-theme="space"] .explanation-box,
+[data-theme="castle"] .explanation-box,
+[data-theme="lab"] .explanation-box{
+  background:linear-gradient(135deg,rgba(251,146,60,.12),rgba(245,158,11,.08));
+  border:1px solid rgba(251,146,60,.28);
+  color:var(--text)
+}
+
+/* Keep option label color inherited */
+.option-label{color:inherit!important}
+
+/* Readability helper for dialog cancel */
+#dialog-cancel.btn-secondary{
+  opacity:.68;
+  background:color-mix(in srgb,var(--bg-card) 78%,transparent 22%);
+  color:var(--text-light)
+}
+
+/* Ensure exclusion list formatting */
+#section-exclusions-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:flex-start
+}
+#section-exclusions-list label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%
+}
+
+/* LTR rendering for questions while preserving rest of app */
+#question-container.exam-content-ltr,
+#question-container.exam-content-ltr .question-text,
+#question-container.exam-content-ltr .options-list,
+#question-container.exam-content-ltr .option-btn,
+#question-container.exam-content-ltr .answer-summary,
+#question-container.exam-content-ltr .explanation-box,
+#readonly-content.readonly-ltr,
+#readonly-content.readonly-ltr .question-text,
+#readonly-content.readonly-ltr .options-list,
+#readonly-content.readonly-ltr .option-btn,
+#results-review .review-question-card,
+#results-review .review-question-card .question-text,
+#results-review .review-question-card .options-list,
+#results-review .review-question-card .option-btn{
+  direction:ltr;
+  text-align:left;
+  unicode-bidi:plaintext
+}
+#question-container.exam-content-ltr .question-header,
+#readonly-content.readonly-ltr .question-header{
+  direction:ltr
+}
+
+/* Pirates badge contrast */
+[data-theme="pirates"] .app-subtitle{color:#f7f0d7}
+[data-theme="pirates"] .exam-progress-badge{
+  color:#fff7e3;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18)
+}
+
+/* Mobile support for updated exam layout and logos */
+@media (max-width:767px){
+  .exam-status-row{
+    grid-template-columns:1fr;
+    direction:rtl
+  }
+  .exam-progress-badge,
+  .exam-timer,
+  .btn-exam-settings{
+    justify-self:stretch;
+    text-align:center
+  }
+  .exam-grid-controls{justify-content:flex-start}
+  .logo-gallery{gap:10px}
+  .app-logo{width:130px}
+}
